@@ -36,4 +36,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // to be called as a property $user->articles
+    public function articles()
+    {
+        return $this->hasMany(Article::class);  // select * from articles where user_id = this_user
+    }
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
 }
